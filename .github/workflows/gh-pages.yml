@@ -1,0 +1,18 @@
+name: Deploy to github.io 
+on:
+  workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+      - run: npm i @doc-tools/docs -g
+      - run: yfm -i docs -o docs-gen
+      - uses: actions/upload-artifact@v4
+        with:
+          name: docs-gen
+          path: |
+            docs-gen

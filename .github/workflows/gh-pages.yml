@@ -13,6 +13,8 @@ jobs:
       - run: yfm -i . -o ./.docs-gen
       - uses: actions/upload-artifact@v4
         with:
-          name: docs-gen
+          name: github-pages
           path: |
             .docs-gen
+      - uses: actions/deploy-pages@v4
+            
